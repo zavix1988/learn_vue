@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task 5</title>
+</head>
+<body>
+<div id="app">
+    <h2>{{ title }} = {{ counter }}</h2>
+    <button v-on:click="upCounter(5, 'upper to 5', $event)">Upper on 5</button>
+    <button v-on:click="upCounter(10, 'upper to 10', $event)">Upper on 10</button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            counter: 0,
+            title: 'Counter',
+        },
+        methods: {
+            upCounter: function(upper, str, event) {
+                this.counter += upper;
+                this.title = str;
+
+                if (upper === 5) {
+                    event.target.style.color = 'blue'
+                } else if(upper === 10) {
+                    //red
+                    event.target.style.color = 'red'
+                }
+            }
+
+    }
+    });
+</script>
+</body>
+</html>
