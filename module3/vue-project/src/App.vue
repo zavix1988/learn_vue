@@ -1,13 +1,39 @@
 <template>
-    <h1>{{ msg }}</h1>
+<div>
+    <h1>Parent: {{ carName }}</h1>
+
+    <app-counter></app-counter>
+    
+    <app-car 
+      :carName="carName"
+      :carYear="carYear"
+      :changeFunc="changeNameToAudy"
+      @nameChanged="carName = $event"
+      @counterUpdated="counter = $event"
+    ></app-car>
+</div>
 </template>
 
 <script>
+
+import Car from './Car.vue'
+import Counter from './Counter.vue'
+
 export default {
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      carName: 'Ford',
+      carYear: 2009,
     }
+  },
+  methods: {
+    changeNameToAudy() {
+      this.carName = 'Audi'
+    }
+  },
+  components: {
+    appCar: Car,
+    appCounter: Counter,
   }
 }
 </script>
